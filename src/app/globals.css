@@ -3,8 +3,44 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Design System Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafaf9;
+  --bg-tertiary: #f5f5f4;
+  --bg-black-solid: #1c1917;
+  --bg-warning-primary: #ffedd5;
+  --bg-info-primary: #eff6ff;
+
+  --border-primary: #e7e5e4;
+  --border-info-secondary: #93c5fd;
+
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-tertiary: #78716c;
+  --text-placeholder: #a8a29e;
+  --text-on-dark-color: #ffffff;
+  --text-warning-primary: #ea580c;
+  --text-info-primary: #2563eb;
+
+  /* Spacing */
+  --xxs: 2px;
+  --xs2: 4px;
+  --sm: 8px;
+  --base: 12px;
+  --md: 6px;
+  --lg: 8px;
+
+  /* Colors */
+  --green-500: #22c55e;
+  --blue-500: #3b82f6;
+  --yellow-500: #eab308;
+  --red-500: #ef4444;
+  --violet-500: #8b5cf6;
 }
 
+/* Tailwind CSS 4 @theme directive - configures theme tokens */
+/* stylelint-disable-next-line at-rule-no-unknown */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -22,5 +58,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
