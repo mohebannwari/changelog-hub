@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## General rules
+- never create markdown (`.md`) files after you're done. NEVER!
+- never use emojis in your replies
+- i know i'm absolutely right. no need to mention it
+
 ## Project Overview
 
 This is a Next.js 16 application using the App Router architecture, TypeScript, and Tailwind CSS 4. The project is bootstrapped with `create-next-app` and follows Next.js conventions.
@@ -46,3 +51,4 @@ npm run lint   # Run ESLint
 
 ## Icon Usage
 - Use always tailwind icons for icons, they are all optimized and optimized for the web.
+
