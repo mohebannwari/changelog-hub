@@ -1,46 +1,102 @@
 @import "tailwindcss";
 
+/**
+ * Design System Color Variables
+ * 
+ * These CSS custom properties define the color scheme for both light and dark modes.
+ * Colors are extracted from Figma design system and automatically switch based on 
+ * system preferences using the prefers-color-scheme media query.
+ */
+
 :root {
+  /* Base theme colors */
   --background: #ffffff;
   --foreground: #171717;
 
-  /* Design System Colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #fafaf9;
-  --bg-tertiary: #e7e5e4;
-  --bg-black-solid: #1c1917;
+  /* Light Mode - Background Colors */
+  --bg-primary: #e7e5e4;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #fafaf9;
+  --bg-black-solid: #1b1917;
   --bg-warning-primary: #ffedd5;
-  --bg-info-primary: #eff6ff;
+  --bg-info-primary: #c4dafb;
 
-  --border-primary: #e7e5e4;
+  /* Light Mode - Border Colors */
+  --border-primary: #d5d3d1;
   --border-secondary: #d6d3d1;
   --border-warning-secondary: #fdba74;
-  --border-info-secondary: #93c5fd;
+  --border-info-primary: #c4dafb;
+  --border-info-secondary: #9dc4f8;
 
-  --stone-800: #292524;
-
-  --text-primary: #1c1917;
-  --text-secondary: #57534e;
-  --text-tertiary: #78716c;
-  --text-placeholder: #a8a29e;
+  /* Light Mode - Text Colors */
+  --text-primary: #1b1917;
+  --text-secondary: #56534f;
+  --text-tertiary: #77716d;
+  --text-placeholder: #a7a29e;
   --text-on-dark-color: #ffffff;
-  --text-warning-primary: #ea580c;
-  --text-info-primary: #2563eb;
+  --text-on-light-color: #000000;
+  --text-warning-primary: #d9622b;
+  --text-info-primary: #2a4dd0;
 
-  /* Spacing */
+  /* Light Mode - Icon Colors */
+  --icon-primary: #1b1917;
+  --icon-tertiary: #77716d;
+
+  /* Spacing (same for both modes) */
   --xxs: 2px;
   --xs2: 4px;
-  --sm: 8px;
+  --xs: 8px;
+  --sm: 12px;
   --base: 12px;
   --md: 6px;
-  --lg: 8px;
+  --s: 6px;
+  --lg: 10px;
+  --zero: 0px;
 
-  /* Colors */
+  /* Status Colors (same for both modes) */
   --green-500: #22c55e;
   --blue-500: #3b82f6;
   --yellow-500: #eab308;
   --red-500: #ef4444;
   --violet-500: #8b5cf6;
+}
+
+/* Dark Mode - Automatically applied based on system preferences */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Base theme colors for dark mode */
+    --background: #0c0a09;
+    --foreground: #ffffff;
+
+    /* Dark Mode - Background Colors (from Figma variables) */
+    --bg-primary: #0c0a09;
+    --bg-secondary: #1b1917;
+    --bg-tertiary: #1b1917;
+    --bg-black-solid: #fafaf9;
+    --bg-warning-primary: #3d2817;
+    --bg-info-primary: #253985;
+
+    /* Dark Mode - Border Colors */
+    --border-primary: #282524;
+    --border-secondary: #282524;
+    --border-warning-secondary: #d9622b;
+    --border-info-primary: #253985;
+    --border-info-secondary: #263fa9;
+
+    /* Dark Mode - Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #d5d3d1;
+    --text-tertiary: #77716d;
+    --text-placeholder: #77716d;
+    --text-on-dark-color: #000000;
+    --text-on-light-color: #ffffff;
+    --text-warning-primary: #e87b35;
+    --text-info-primary: #9dc4f8;
+
+    /* Dark Mode - Icon Colors */
+    --icon-primary: #fafaf9;
+    --icon-tertiary: #77716d;
+  }
 }
 
 /* Tailwind CSS 4 @theme directive - configures theme tokens */
@@ -52,15 +108,33 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/**
+ * Dark mode support using system preference
+ * 
+ * Tailwind CSS 4 uses the 'dark' variant based on prefers-color-scheme media query.
+ * This ensures dark: classes work properly with automatic theme detection.
+ */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Dark mode is automatically applied via CSS variables above */
+  /* The dark: variant in Tailwind will match this media query */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  /* Smooth transition when theme changes */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/**
+ * Dark mode icon color overrides
+ * 
+ * SVG icons have hardcoded dark fills that need to be inverted in dark mode.
+ * Using CSS filters to make dark icons appear light.
+ */
+@media (prefers-color-scheme: dark) {
+  .icon-invert-dark {
+    filter: brightness(0) invert(1);
+  }
 }
